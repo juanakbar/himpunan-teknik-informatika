@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('divisi_id')->after('id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('kwsb_id')->after('id')->nullable()->constrained('k_w_s_b_s')->cascadeOnDelete();
             $table->string('image')->nullable();
             $table->year('angkatan')->nullable();
             $table->string('jurusan')->nullable();

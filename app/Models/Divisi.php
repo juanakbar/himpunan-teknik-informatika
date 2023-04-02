@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Divisi extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function kadiv()
+    {
+        return $this->hasOne(Kadiv::class);
+    }
 }

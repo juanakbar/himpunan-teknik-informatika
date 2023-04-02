@@ -26,6 +26,7 @@ class User extends Authenticatable
         'email',
         'password',
         'divisi_id',
+        'kwsb_id',
         'image',
         'angkatan',
         'jurusan',
@@ -55,4 +56,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function divisi()
+    {
+        return $this->belongsTo(Divisi::class);
+    }
+
+    public function kwsb()
+    {
+        return $this->belongsTo(KWSB::class);
+    }
+
+    public function Avatar()
+    {
+        return $this->image ? asset('storage/' . $this->image) : asset('storage/avatars/default.png');
+    }
 }

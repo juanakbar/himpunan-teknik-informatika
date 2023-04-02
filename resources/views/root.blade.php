@@ -11,6 +11,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/datepicker.min.js"></script>
+    <x-head.tinymce-config />
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
     @spladeHead
@@ -18,6 +19,19 @@
 
 <body class="font-sans antialiased bg-gray-50 dark:bg-gray-800 custom">
     @splade
+    @stack('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

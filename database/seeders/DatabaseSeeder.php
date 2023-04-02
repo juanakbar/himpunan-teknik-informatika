@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\KWSB;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -71,5 +73,37 @@ class DatabaseSeeder extends Seeder
         $superAdmin->givePermissionTo('All Access');
         $internal->givePermissionTo('Ketua Divisi');
         $user->givePermissionTo('Anggota');
+
+
+        $kwsb = [
+            [
+                'name' => $name = 'Ketua Himpunan',
+                'slug' => Str::slug($name . Str::random(6))
+            ],
+            [
+                'name' => $name = 'Wakil Ketua Himpunan',
+                'slug' => Str::slug($name . Str::random(6))
+            ],
+            [
+                'name' => $name = 'Sekretaris 1',
+                'slug' => Str::slug($name . Str::random(6))
+            ],
+            [
+                'name' => $name = 'Sekretaris 2',
+                'slug' => Str::slug($name . Str::random(6))
+            ],
+            [
+                'name' => $name = 'Bendaraha 1',
+                'slug' => Str::slug($name . Str::random(6))
+            ],
+            [
+                'name' => $name = 'Bendaraha 2',
+                'slug' => Str::slug($name . Str::random(6))
+            ],
+        ];
+
+        foreach ($kwsb as $item) {
+            KWSB::create($item);
+        }
     }
 }
